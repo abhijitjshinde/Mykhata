@@ -1,0 +1,15 @@
+{
+    "name": "Maratha kirana",
+    "customers": {
+        "Sadhu": {
+            "name": "sadhu",
+            "number": "",
+            "profile": "",
+            "Account": {
+                "20-09-2020": { "item": "oil", "price": "", "quantity": "" },
+                "20-09-2020": { "item": "rice", "price": "", "quantity": "" },
+                "21-09-2020": { "item": "biskut", "price": "", "quantity": "" }
+            }
+        }
+    }
+}

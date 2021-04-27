@@ -1,0 +1,92 @@
+<-Snackbar>
+ 
+    MDCard:
+        id: box
+        size_hint_y: None
+        height: dp(58)
+        spacing: dp(5)
+        padding: dp(10)
+        y: -self.height
+        x: root.padding
+        md_bg_color: get_color_from_hex('bada55')
+        radius: (5, 5, 5, 5) if root.padding else (0, 0, 0, 0)
+        elevation: 11 if root.padding else 0
+
+        MDIconButton:
+            pos_hint: {'center_y': .5}
+            icon: root.icon
+            opposite_colors: True
+
+        MDLabel:
+            id: text_bar
+            size_hint_y: None
+            height: self.texture_size[1]
+            text: root.text
+            font_size: root.font_size
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('ffffff')
+            shorten: True
+            shorten_from: 'right'
+            pos_hint: {'center_y': .5}
+<ListItemWithCheckbox>:
+
+    IconLeftWidget:
+        icon: root.icon
+
+    RightCheckbox:
+<Content>
+    adaptive_height: True
+
+    MDBoxLayout:
+        orientation: "vertical"
+        size_hint: .8, None
+        adaptive_height: True
+        md_bg_color: 242/255, 242/255, 242/255, 1
+        # pos_hint: {"center_x": .5, "center_y": .7}
+        radius: 15, 15, 15, 15
+        padding: "20dp"
+        spacing: "8dp"
+        MDLabel:
+            text: "Add New Entry"
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        MDSeparator:
+        MDTextField:
+            id: product
+            hint_text: "Item"
+            mode: "rectangle"
+            color_mode: 'custom'
+            line_color_focus: 10/255, 62/255, 84/255, 1                    
+        MDTextField:
+            id: price
+            input_filter: "int"
+            hint_text: "Price"
+            mode: "rectangle"
+            color_mode: 'custom'
+            line_color_focus: 10/255, 62/255, 84/255, 1
+        MDRectangleFlatButton:
+            id: add_button
+            text: "Add Entry"
+            text_color: 1, 1, 1, 1
+            md_bg_color: 10/255, 62/255, 84/255, 1
+            pos_hint: {"center_x": .5, "center_y": 0.1}
+            on_release:
+                app.root.ids.addshopitemscreen.Add_entry(product.text,price.text)
+<Add_Shop_Item>:
+    name: "addshopitemscreen"
+    BoxLayout:
+        orientation: "vertical"        
+        spacing: "10dp"
+        MDToolbar:                    
+            title: "Account"
+            md_bg_color: [10/255, 62/255, 84/255, 1]#app.theme_cls.accent_color            
+            left_action_items: [['arrow-left', lambda x: root.Back_screen()]]
+            right_action_items: [['cash-plus', lambda x: root.callme()]]
+                       
+        ScrollView:
+            MDGridLayout:
+                id: box1
+                cols: 1
+                adaptive_height: True

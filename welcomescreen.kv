@@ -1,0 +1,32 @@
+<WelcomeScreen>:
+    FloatLayout:
+        Image:
+            source: 'welcome.png'
+            pos_hint: {"center_x": .5, "center_y": .7}
+            
+        MDRectangleFlatButton:
+            id: log_in_button
+            size_hint: .9, .05
+            text_color: 1, 1, 1, 1
+            md_bg_color: 10/255, 62/255, 84/255, 1
+            pos_hint: {"top": .195, "center_x": .5} 
+            text: "Sign In"
+            # bg_color: root.parent.parent.primary_color if root.parent else (0,0,0,1)
+            # color: root.parent.parent.secondary_color if root.parent else (0,0,0,1)
+            on_release:
+                root.parent.current = "sign_in_screen"
+
+        MDRectangleFlatButton:
+            id: create_account_button
+            size_hint: .9, .05
+            pos_hint: {"top": .225, "center_x": .5}
+            text: "Create Account"
+            text_color: 1, 1, 1, 1
+            md_bg_color: 10/255, 62/255, 84/255, 1
+            pos_hint: {"center_x": .5, "center_y": .1}
+            # bg_color: root.parent.parent.primary_color if root.parent else (0,0,0,1)
+            # color: root.parent.parent.secondary_color if root.parent else (0,0,0,1)
+            on_release:
+                root.parent.current = "create_account_screen"
+
+

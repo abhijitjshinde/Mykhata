@@ -1,0 +1,104 @@
+<Error_Empty_field>
+
+    MDCard:
+        id: box
+        size_hint_y: None
+        height: dp(58)
+        spacing: dp(5)
+        padding: dp(10)
+        y: -self.height
+        x: root.padding
+        md_bg_color: get_color_from_hex('ff0000')
+        radius: (5, 5, 5, 5) if root.padding else (0, 0, 0, 0)
+        elevation: 11 if root.padding else 0
+
+        MDIconButton:
+            pos_hint: {'center_y': .5}
+            icon: root.icon
+            opposite_colors: True
+
+        MDLabel:
+            id: text_bar
+            size_hint_y: None
+            height: self.texture_size[1]
+            text: root.text
+            font_size: root.font_size
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('ffffff')
+            shorten: True
+            shorten_from: 'right'
+            pos_hint: {'center_y': .5}
+<AddCustomerScreen1>:
+    name: "addCustomerScreen1"
+    id: addCustomerScreen1
+    
+    BoxLayout:
+        orientation: "vertical"        
+        spacing: "10dp"
+        MDToolbar:                    
+            title: "Add Customer"
+            md_bg_color: [10/255, 62/255, 84/255, 1]#app.theme_cls.accent_color            
+            left_action_items: [['arrow-left', lambda x: root.back_to_home()]]
+            # right_action_items: [['trash-can', lambda x: x]]
+                       
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                padding: dp(48)
+                spacing: dp(15)
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint: .8, None
+                    adaptive_height: True
+                    md_bg_color: 242/255, 242/255, 242/255, 1
+                    pos_hint: {"center_x": .5, "center_y": .7}
+                    radius: 15, 15, 15, 15
+                    padding: "20dp"
+                    spacing: "8dp"
+                    MDLabel:
+                        text: "Add New Customer"
+                        halign: "center"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDSeparator:
+                    MDTextField:
+                        id: Name
+                        hint_text: "Name"
+                        mode: "rectangle"
+                        color_mode: 'custom'
+                        line_color_focus: 10/255, 62/255, 84/255, 1
+                        on_text_validate: root.update("click"); self.text = ""
+                    MDTextField:
+                        id: Phone_Number
+                        input_filter: "Phone Number"
+                        hint_text: "Quantity"
+                        hint_text: "Phone Number"
+                        input_filter: "int"
+                        max_text_length: 12                        
+                        mode: "rectangle"
+                        color_mode: 'custom'
+                        line_color_focus: 10/255, 62/255, 84/255, 1
+                    # BoxLayout:
+                    #     orientation: "horizontal"
+                    #     spacing: "30dp"
+                    #     padding: "30dp"
+                    MDDropDownItem:
+                        id: drop_item
+                        pos_hint: {'center_x': .3, 'center_y': .9}
+                        text: 'Male'
+                        on_release: root.dropme()
+                        # MDIconButton:
+                        #     icon: "folder-open"
+                        #     pos_hint: {"center_x": .7, "center_y": .9}
+                        #     on_release:
+                        #         root.open_file_manager("Preview")
+                    MDRectangleFlatButton:
+                        id: add_button
+                        text: "Add Entry"
+                        text_color: 1, 1, 1, 1
+                        md_bg_color: 10/255, 62/255, 84/255, 1
+                        pos_hint: {"center_x": .5, "center_y": 0.96}
+                        on_release: 
+                            root.update("click")

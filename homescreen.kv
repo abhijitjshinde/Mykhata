@@ -1,0 +1,92 @@
+<-Snackbar>
+
+    MDCard:
+        id: box
+        size_hint_y: None
+        height: dp(58)
+        spacing: dp(5)
+        padding: dp(10)
+        y: -self.height
+        x: root.padding
+        md_bg_color: get_color_from_hex('bada55')
+        radius: (5, 5, 5, 5) if root.padding else (0, 0, 0, 0)
+        elevation: 11 if root.padding else 0
+
+        MDIconButton:
+            pos_hint: {'center_y': .5}
+            icon: root.icon
+            opposite_colors: True
+
+        MDLabel:
+            id: text_bar
+            size_hint_y: None
+            height: self.texture_size[1]
+            text: root.text
+            font_size: root.font_size
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('ffffff')
+            shorten: True
+            shorten_from: 'right'
+            pos_hint: {'center_y': .5}
+ 
+<HomeScreen>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+
+        MDToolbar:
+            id: toolbar                    
+            title: "Home"
+            md_bg_color: [10/255, 62/255, 84/255, 1]
+            right_action_items: [['plus-thick', lambda x: root.Add_customer()],["logout", lambda x: x]]
+        # scrollview give the content vertically align from top
+       
+        ScrollView:
+            do_scroll_x: False
+            MDList:
+                id: costumer_list                
+
+# Home screen Add Costumer button dilog content
+# <DialogsCustomContent>   
+#     orientation: "vertical"
+#     spacing: "12dp"
+#     size_hint_y: None
+#     height: "130dp"
+
+#     MDTextField:
+#         hint_text: "Name"
+#         id: name
+#     MDTextField:
+#         hint_text: "Phone Number"
+#         input_filter: "int"
+#         max_text_length: 12
+#         id: phone_n
+#     BoxLayout:
+#         orientation: "horizontal"
+#         spacing: "20dp"
+#         # padding: "30dp"
+#         MDDropDownItem:
+#             id: drop_item
+#             pos_hint: {'center_x': .3, 'center_y': .5}
+#             text: 'Male'
+#             on_release: root.dropme()
+#         MDIconButton:
+#             icon: "folder-open"
+#             pos_hint: {"center_x": .7, "center_y": .5}
+#             on_release:
+#                 root.open_file_manager("Preview")
+
+        
+
+
+# <homescreenlist>:
+#     TwoLineAvatarListItem:
+#         id: mdlist
+#         type: "two-line"
+#         text: "Abhijit shinde"
+#         secondary_text: "Total - $589"
+#         on_release: app.root.current = "detail_screen"
+#         ImageLeftWidget:
+#             id: list_img
+#             source: "assets/user.jpeg"

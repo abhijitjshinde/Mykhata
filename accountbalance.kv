@@ -1,0 +1,41 @@
+<AccountBalance>:
+    name: "accountbalance"
+    BoxLayout:
+        orientation: "vertical"        
+        spacing: "10dp"
+        MDToolbar:                    
+            title: "Accounts"
+            md_bg_color: [10/255, 62/255, 84/255, 1]#app.theme_cls.accent_color            
+            left_action_items: [['arrow-left', lambda x: app.root.ids.AddCustomerScreen1.back_to_home()]]
+            right_action_items: [['plus-thick', lambda x: root.Add_Items()]]
+
+            # right_action_items: [['trash-can', lambda x: x]]
+                       
+        ScrollView:
+            do_scroll_x: False
+            MDBoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                padding: dp(48)
+                spacing: dp(15)
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, None
+                    adaptive_height: True
+                    md_bg_color: 242/255, 242/255, 242/255, 1
+                    pos_hint: {"center_x": .5, "center_y": .7}
+                    radius: 15, 15, 15, 15
+                    padding: "12dp"
+                    spacing: "8dp"
+                     
+                    MDLabel:
+                        text: "Total      -      8546"
+                        # halign: "center"
+                        # pos_hint: {"center_x": .1, "center_y": .7}
+                        # size_hint_y: None
+                        height: self.texture_size[1]
+                        
+
+                MDSeparator:
+                MDList:
+                    id: Account_list

@@ -1,0 +1,41 @@
+#:include firebaseloginscreen.kv
+#:import FirebaseLoginScreen firebaseloginscreen.FirebaseLoginScreen
+#:import utils kivy.utils
+# FloatLayout:
+#     canvas.before:
+#         Color:
+#             rgb: 1,1,1
+#         Rectangle:
+#             size: self.size
+#             pos: self.pos
+ScreenManager:
+    id: screen_mngr
+    FirebaseLoginScreen:
+        size_hint: 1,1
+        pos_hint: {"top": 1, "right": 1}
+        web_api_key: "AIzaSyCSFe6uoc35OAsIWGaXG_B6SP6mzuo6I_Y"
+               
+        on_login_success:
+            root.ids.HomeScreen.Welcome_Back()
+            localId = self.localId
+            app.user_localId(localId)
+            app.user_idToken = self.idToken
+            idToken = self.idToken
+            root.ids['HomeScreen'].on_enter1(localId)
+            root.ids['AddCustomerScreen1'].on_enter2(localId,idToken)
+            root.ids['addshopitemscreen'].Get_Ids(localId,idToken)
+            # root.ids['HomeScreen'].back_to_detail_screen(localId)
+            print(localId," this is Id")
+            screen_mngr.current = 'HomeScreen'
+    HomeScreen:
+        id: HomeScreen
+        name: "HomeScreen"
+    AddCustomerScreen1:
+        id: AddCustomerScreen1
+        name: "addCustomerScreen1"
+    AccountBalance:
+        id: accountbalance
+        name: "accountbalance"
+    Add_Shop_Item:
+        id: addshopitemscreen
+        name: 'addshopitemscreen'
